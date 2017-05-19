@@ -1,0 +1,61 @@
+// bower:scss
+// endbower
+
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+
+    h2 {
+        text-align: center;
+        font-size: 15px;
+        color: #fff;
+        z-index: 1000;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        background-color: #555;
+        padding: 10px;
+        margin: 0;
+        left: 0;
+
+        &.drag-over {
+            background-color: orange;
+        }
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #555;
+
+        .state-boundary {
+            fill: none;
+            stroke: #777;
+            stroke-width: .70px;
+        }
+    }
+    .sphere {
+        fill: #fff;
+    }
+
+    .land {
+        fill: #000;
+    }
+
+    .boundary {
+        fill: none;
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+}

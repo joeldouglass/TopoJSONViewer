@@ -92,10 +92,25 @@
         .attr("width", width)
         .attr("height", height);
 
-    function drawMap(topoData) {
+    function drawMap(mapData) {
 
-        console.log(topoData);
+      var shapes;
+      // GEOJSON
+      if(mapData.hasOwnProperty('features')){
+        // convert to topojson
+        console.log("Converting to TopoJson", mapData);
+        mapData = topojson.topology({topo: mapData});
+      }
+      // TOPOJSON
+      else if(mapData.hasOwnProperty('objects')){
+        //nop
+      }
+      else {
+        alert('Unknown File Type');
+        return;
+      }
 
+      console.log(mapData);
         g.selectAll("*").remove();
 
         g.append("path")
@@ -104,7 +119,7 @@
             .attr("d", path);
 
         g.append("path")
-            .datum(topojson.mesh(topoData, topoData.objects[d3.keys(topoData.objects)[0]]))
+            .datum(topojson.mesh(mapData, mapData.objects[d3.keys(mapData.objects)[0]]))
             .attr("class", "state-boundary")
             .attr("d", path);
     }
